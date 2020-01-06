@@ -1,17 +1,10 @@
 <template>
 <!--    对话框-->
-  <template v-if="">
-    <login_page/>
-  </template>
-
-
-
-
+  <p>123</p>
 </template>
 
 
 <script>
-
     export default {
         name: "login_page",
     }

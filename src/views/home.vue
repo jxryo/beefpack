@@ -30,9 +30,9 @@
         <Icon type="ios-construct"/>
         综合设置
       </menu-item>
-      <menu-item name="5">
-        <Icon type="md-body"/>
-        司马懿
+      <menu-item>
+        <Icon type="ios-home" />
+        <router-link style="color: #fff" to="/">返回应用</router-link>
       </menu-item>
     </Menu>
     <div id = 'user_table'>

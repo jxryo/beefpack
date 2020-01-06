@@ -35,6 +35,12 @@
             </template>
           </div>
         </menu-item>
+        <template v-if="is_admin()">
+          <menu-item>
+            <Icon type="ios-infinite" />
+            <router-link style="color:black" to="/admin">管理后台</router-link>
+          </menu-item>
+        </template>
       </Menu>
     </div>
 
@@ -54,6 +60,9 @@
       }
     },
     methods: {
+      is_admin:function () {
+      return true
+      }
     }
   }
 </script>
