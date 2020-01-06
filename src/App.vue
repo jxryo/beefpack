@@ -13,12 +13,11 @@
 
 <script>
 
- //  export default Vue(
- //   {
- //     name:'App',
- //     components:[top_bar]
- //   }
- // );
+//   export default Vue(
+//    {
+//      name:'App'
+//    }
+//  );
 </script>
 
 <style>

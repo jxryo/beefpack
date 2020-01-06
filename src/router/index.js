@@ -6,6 +6,7 @@ import mainPage from "../views/mainPage";
 import login from "../views/login";
 import login_page from "../components/login_page";
 import register_page from "../components/register_page";
+
 Vue.use(Router);
 
 export default new Router({

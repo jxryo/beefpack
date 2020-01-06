@@ -4,10 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ViewUI from 'view-design'
-import 'view-design/dist/styles/iview.css';
+import 'view-design/dist/styles/iview.css'
 import axios from 'axios';
-import global from "../static/global";
+import global from "../static/global"
+import './style/theme.css'
+import './style/character.css'
+//自己写的样式
+import ElementUI from 'element-ui'
+
+// 注册element-ui
+Vue.use(ElementUI)
+
+
 Vue.config.productionTip = false;
+
 Vue.use(ViewUI);
 Vue.component('top_bar', { /* ... */});
 // 将axios和qs挂载
