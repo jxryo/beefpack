@@ -1,9 +1,9 @@
 <template>
   <mainPage/>
-  <template v-if="is_login">
+  <template v-if="is_login_page_see">
   <Login_page/>
   </template >
-  <template v-if="register_page_click(is_login)">
+  <template v-else>
   <register_page/>
   </template>
 </template>
@@ -18,12 +18,10 @@
     components: {mainPage, login_page, register_page},
     data() {
       return {
-        is_login: false
+        is_login_page_see: true
       }
     },methods:{
-      register_page_click:function (is_login) {
-        return !is_login;
-      }
+
     }
   }
 </script>
