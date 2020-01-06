@@ -84,11 +84,12 @@
     },
     methods: {
       userlist: function () {
-        axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(data => {
+        axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(res => {
           let i = 0;
+          const list = res.data.data.list;
 
-          while (i <= data.data.data.list.length - 1) {
-            let user = data.data.data.list[i];
+          while (i <= list.length - 1) {
+            let user = list[i];
             table_data.push(eval(user));
             i++;
           }
