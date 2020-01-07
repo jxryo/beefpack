@@ -8,7 +8,6 @@ import login_page from "../components/login_page";
 import register_page from "../components/register_page";
 import game_page from "../views/game_page";
 import top_bar from "../components/top_bar";
-import blur_content from "../components/blur_content";
 Vue.use(Router);
 
 export default new Router({
@@ -42,10 +41,6 @@ export default new Router({
     path:'/top_bar',
       name:'top_bar',
       component:top_bar
-    },{
-    path:'/blur_content',
-      name:'blur_content',
-      component:blur_content
     }
   ]
 })
