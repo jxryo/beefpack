@@ -9,7 +9,7 @@
       <!--<button class="login_btn el-button el-button&#45;&#45;primary is-round" type="primary" round>登录</button>-->
       <el-button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading">登录</el-button>
       <div style="margin-top: 10px">
-        <span style="color: #000099;" @click="login">微信账号登陆</span><span style="float: right;color: #A9A9AB">忘记密码？</span>
+        <span style="color: #000099;" @click="login"><router-link to="/register_page">注册</router-link></span><span style="float: right;color: #A9A9AB"><router-link to="/">忘记密码</router-link></span>
       </div>
     </div>
   </div>
