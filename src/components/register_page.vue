@@ -1,5 +1,6 @@
 <template>
   <div>
+    <top_bar/>
     <div class="outer_label">
       <img class="inner_label login_logo" src="../assets/logo.png">
     </div>
@@ -24,8 +25,10 @@
     'base_url': 'http://localhost:8080/',
   };
   import axios from "axios";
+  import top_bar from "./top_bar";
   export default {
     name: 'register',
+    components:{top_bar},
     data() {
       return {
         isBtnLoading: false,
@@ -41,7 +44,8 @@
     methods: {
       register_user: function () {
         axios.post(URL_ROOT.base_url + 'user',this.user_list_info).then(res => {
-          alert('注册成功')
+          alert('注册成功');
+          // console.log(this.$router.app.$router.currentRoute.path);
 
         }).catch(error => {
           alert(error)
