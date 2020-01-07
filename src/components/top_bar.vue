@@ -19,14 +19,17 @@
         <Icon type="logo-steam"/>
         <router-link style="color: white" to="/game_page">玩个游戏</router-link>
       </menu-item>
-
+      <menu-item>
+        <Icon type="ios-color-palette" />
+        <router-link style="color: white" to="/zmd">看看图</router-link>
+      </menu-item>
       <template v-if="is_admin()">
         <menu-item>
           <Icon type="ios-infinite" />
           <router-link style="color:black" to="/admin">管理后台</router-link>
         </menu-item>
       </template>
-      <menu-item style="position: relative;left: 1100px">
+      <menu-item style="position: relative;left: 1000px">
         <div v-on:click="loginChange">
           <div id="login_out">
             <Icon type="md-person-add"/>

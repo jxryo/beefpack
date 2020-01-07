@@ -3,7 +3,7 @@
     <top_bar/>
     <div id="game_part" class="game_part">
       <div class="blur_class">
-        <div style="position: relative;left: 160px;top: 150px">
+        <div style="position: relative;left: 100px;top: 150px">
         <p style="color: black;font-size: x-large">请点击以下按钮开始游戏</p>
         </div>
       </div>
@@ -50,26 +50,28 @@
   }
 
   .blur_class {
-    background-color: rgba(0,0,0,0.3);
+    /*background-color: rgba(0,0,0,0.3);*/
     /*-webkit-filter: blur(2px);*/
     /*-moz-filter: blur(2px);*/
     /*-ms-filter: blur(2px);*/
     /*-o-filter: blur(2px);*/
     /*filter: blur(2px);*/
     z-index: 1;
-    width: 600px;
-    height: 400px;
+    overflow: hidden;
+    width: 400px;
+    height: 200px;
     /*background-position: center top;*/
     /*background-size: cover;*/
     border-radius: 10%;
     position: relative;
-    left: 425px;
+    left: 525px;
 
   }
 
   .blur_class::after {
     content: '';
     position: absolute;
+    margin: -30px;
     top: 0;
     left: 0;
     right: 0;
