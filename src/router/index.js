@@ -41,10 +41,6 @@ export default new Router({
     path:'/top_bar',
       name:'top_bar',
       component:top_bar
-    },{
-      path:'/register_page',
-      name:'register_page',
-      component:register_page
     }
   ]
 })

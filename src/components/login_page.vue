@@ -7,9 +7,9 @@
       <input type="text"  class="qxs-ic_user qxs-icon"  placeholder="用户名" v-model="userName">
       <input type="text"  class="qxs-ic_password qxs-icon"  placeholder="密码" v-model="password">
       <!--<button class="login_btn el-button el-button&#45;&#45;primary is-round" type="primary" round>登录</button>-->
-      <el-button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading">登录</el-button>
+      <el-button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading" v-on:click="login_check()">登录</el-button>
       <div style="margin-top: 10px">
-        <span style="color: #000099;" @click="login"><router-link to="/register_page">注册</router-link></span><span style="float: right;color: #A9A9AB"><router-link to="/">忘记密码</router-link></span>
+        <span style="color: #000099;" @click="login">微信账号登陆</span><span style="float: right;color: #A9A9AB">忘记密码？</span>
       </div>
     </div>
   </div>
@@ -21,7 +21,6 @@
   //  import { userLogin } from '../../api/api';
 
   import axios from "axios";
-
   export default {
     name:'login',
     data() {
@@ -58,18 +57,15 @@
 
       },
       userlist: function () {
-        axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(res => {
-          let i = 0;
-          const list = res.data.data.list;
-          while (i <= list.length - 1) {
-            let user = list[i];
-            table_data.push(eval(user));
-            i++;
-          }
-          document.getElementById('get_data_button').style.display='none'
+
+        axios.get(URL_ROOT.base_url + 'user?id=?').then(res => {
+
         }).catch(error => {
           alert(error);
         });
+      },
+      login_check:function () {
+
       }
     }
   }
