@@ -7,7 +7,7 @@ import login from "../views/login";
 import login_page from "../components/login_page";
 import register_page from "../components/register_page";
 import game_page from "../views/game_page";
-
+import top_bar from "../components/top_bar";
 Vue.use(Router);
 
 export default new Router({
@@ -37,6 +37,10 @@ export default new Router({
       path:'/game_page',
       name:'game_page',
       component:game_page
+    },{
+    path:'/top_bar',
+      name:'top_bar',
+      component:top_bar
     }
   ]
 })

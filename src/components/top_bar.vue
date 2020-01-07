@@ -1,40 +1,47 @@
 <template>
-  <Menu mode="horizontal" :theme="theme1" active-name="1">
-    <menu-item name="1">
-      <Icon type="ios-paper" />
-      内容管理
-    </menu-item>
-    <menu-item name="2">
-      <Icon type="ios-people" />
-      用户管理
-    </menu-item>
-    <Submenu name="3">
-      <template slot="title">
-        <Icon type="ios-stats" />
-        统计分析
+  <div>
+    <Menu mode="horizontal" :theme="theme1" active-name="1">
+      <submenu name="hk">
+        <template slot="title">
+          <Icon type="ios-color-wand"/>
+          来点好康的
+        </template>
+        <menu-item name="hot_topic">
+          <Icon type="md-flame"/>
+          最热的
+        </menu-item>
+        <menu-item name="new_topic">
+          <Icon type="logo-snapchat"/>
+          最新的
+        </menu-item>
+      </submenu>
+      <menu-item>
+        <Icon type="logo-steam"/>
+        <router-link style="color: white" to="/game_page">玩个游戏</router-link>
+      </menu-item>
+
+      <template v-if="is_admin()">
+        <menu-item>
+          <Icon type="ios-infinite" />
+          <router-link style="color:black" to="/admin">管理后台</router-link>
+        </menu-item>
       </template>
-      <MenuGroup title="使用">
-        <menu-item name="3-1">新增和启动</menu-item>
-        <menu-item name="3-2">活跃分析</menu-item>
-        <menu-item name="3-3">时段分析</menu-item>
-      </MenuGroup>
-      <MenuGroup title="留存">
-        <menu-item name="3-4">用户留存</menu-item>
-        <menu-item name="3-5">流失用户</menu-item>
-      </MenuGroup>
-    </Submenu>
-    <menu-item name="4">
-      <Icon type="ios-construct" />
-      综合设置
-    </menu-item>
-    <br>
-    <p>Change theme</p>
-    <radio-group v-model="theme1">
-      <radio label="light"/>
-      <radio label="dark"/>
-      <radio label="primary"/>
-    </radio-group>
-  </Menu>
+      <menu-item style="position: relative;left: 1000px">
+        <div v-on:click="loginChange">
+          <div id="login_out">
+            <Icon type="md-person-add"/>
+            <router-link style="color: white" to="/login">登录</router-link>
+          </div>
+          <template v-if="is_login">
+            <div id="login_in">
+              <Icon type="md-person-add"/>
+              我的
+            </div>
+          </template>
+        </div>
+      </menu-item>
+    </Menu>
+  </div>
 </template>
 
 <script>
@@ -42,16 +49,19 @@
     name: "top_bar",
     data(){
       return {
-        theme1:'light'
+        theme1:'primary',
+        is_login: false,
+        loginChange:false
+      }
+    },
+    methods:{
+      is_admin:function () {
+        return true
       }
     }
+
   }
-  // var top_bar = new Vue(
-  //   {
-  //     name:'top_bar'
-  //   }
-  // );
-  // export default top_bar
+
 </script>
 
 <style scoped>
