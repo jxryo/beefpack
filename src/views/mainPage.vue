@@ -18,7 +18,7 @@
         </submenu>
         <menu-item>
           <Icon type="logo-steam"/>
-          玩个游戏
+          <router-link style="color: white" to="/game_page">玩个游戏</router-link>
         </menu-item>
         <menu-item>
 
