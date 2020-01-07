@@ -1,18 +1,19 @@
 <template>
-  <div class="content">
-
+  <div class="blur_class">
+    <div class="content">
+    </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "blur_content"
-    }
+  export default {
+    name: "blur_content"
+  }
 </script>
 
 <style scoped>
   .blur_class {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     -webkit-filter: blur(2px);
     -moz-filter: blur(2px);
     -ms-filter: blur(2px);
@@ -47,7 +48,8 @@
     -o-filter: blur(20px);
     filter: blur(20px);
   }
-  .content{
+
+  .content {
     font-size: x-large;
     color: black;
     position: relative;

@@ -6,10 +6,11 @@
     <div class="login_form">
       <input type="text"  class="qxs-ic_user qxs-icon"  placeholder="用户名" v-model="userName">
       <input type="text"  class="qxs-ic_password qxs-icon"  placeholder="密码" v-model="password">
-      <!--<button class="login_btn el-button el-button&#45;&#45;primary is-round" type="primary" round>登录</button>-->
-      <el-button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading" v-on:click="login_check()">登录</el-button>
+        <el-button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading" v-on:click="login_check()">登录</el-button>
       <div style="margin-top: 10px">
-        <span style="color: #000099;" @click="login">微信账号登陆</span><span style="float: right;color: #A9A9AB">忘记密码？</span>
+        <span style="color: #000099;">
+          <router-link to="/register_page">注册</router-link>
+        </span><span style="float: right;color: #A9A9AB">忘记密码？</span>
       </div>
     </div>
   </div>
@@ -18,8 +19,9 @@
 
 
 <script>
-  //  import { userLogin } from '../../api/api';
-
+  let URL_ROOT = {
+    'base_url': 'http://localhost:8080/',
+  };
   import axios from "axios";
   export default {
     name:'login',
@@ -45,13 +47,10 @@
     methods: {
       login() {
         if (!this.userName) {
-          // this.$message.error('请输入用户名');
           alert('请输入用户名');
           return;
         }
         if (!this.password) {
-          // this.$message.error('请输入密码');
-          // return;
           alert('请输入密码');
         }
 
