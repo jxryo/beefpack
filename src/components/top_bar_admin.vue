@@ -42,6 +42,11 @@
 
   export default {
     name: "top_bar_admin",
+    data(){
+      return{
+        theme1: 'dark'
+      }
+    },
     methods: {
       user_list_show: function () {
         document.getElementById('user_table').style.display = 'inline';
