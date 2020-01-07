@@ -12,7 +12,7 @@
       <input type="text" class="qxs-ic_user qxs-icon" placeholder="邮箱" v-model="user_list_info.email">
       <el-button class="login_btn" v-on:click="register_user">注册</el-button>
       <div style="margin-top: 10px">
-        <span style="color: #000099"><router-link to="/login_page">已有账号？登入...</router-link></span>
+        <span style="color: #000099"><router-link to="/login">已有账号？登入...</router-link></span>
         <span style="float: right;color: #A9A9AB"><router-link to="/">忘记密码</router-link></span>
       </div>
     </div>
