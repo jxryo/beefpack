@@ -68,7 +68,7 @@
       }
     ];
     let table_data=[];
-  var URL_ROOT = {
+  let URL_ROOT = {
     'base_url': 'http://localhost:8080/',
   };
   import axios from "axios";
