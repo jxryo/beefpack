@@ -26,7 +26,7 @@
           <router-link style="color:black" to="/admin">管理后台</router-link>
         </menu-item>
       </template>
-      <menu-item style="position: relative;left: 1000px">
+      <menu-item style="position: relative;left: 1100px">
         <div v-on:click="loginChange">
           <div id="login_out">
             <Icon type="md-person-add"/>
@@ -56,7 +56,7 @@
     },
     methods:{
       is_admin:function () {
-        return true
+        return false
       }
     }
 

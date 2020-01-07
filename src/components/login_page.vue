@@ -20,6 +20,8 @@
 <script>
   //  import { userLogin } from '../../api/api';
 
+  import axios from "axios";
+
   export default {
     name:'login',
     data() {
@@ -44,14 +46,30 @@
     methods: {
       login() {
         if (!this.userName) {
-          this.$message.error('请输入用户名');
+          // this.$message.error('请输入用户名');
+          alert('请输入用户名');
           return;
         }
         if (!this.password) {
-          this.$message.error('请输入密码');
-          return;
+          // this.$message.error('请输入密码');
+          // return;
+          alert('请输入密码');
         }
 
+      },
+      userlist: function () {
+        axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(res => {
+          let i = 0;
+          const list = res.data.data.list;
+          while (i <= list.length - 1) {
+            let user = list[i];
+            table_data.push(eval(user));
+            i++;
+          }
+          document.getElementById('get_data_button').style.display='none'
+        }).catch(error => {
+          alert(error);
+        });
       }
     }
   }
