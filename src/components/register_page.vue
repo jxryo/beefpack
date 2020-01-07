@@ -21,79 +21,79 @@
 
 
 <script>
-  //  import { userLogin } from '../../api/api';
-
-  import axios from "axios";
-
-  export default {
-    name:'register',
-    data() {
-      return {
-        userName: '',
-        password: '',
-        isBtnLoading: false
-      }
-    },
-    created () {
-      if(JSON.parse( localStorage.getItem('user')) && JSON.parse( localStorage.getItem('user')).userName){
-        this.userName = JSON.parse( localStorage.getItem('user')).username;
-        this.password = JSON.parse( localStorage.getItem('user')).password;
-        this.nickname = JSON.parse( localStorage.getItem('user')).nickname;
-        this.sex = JSON.parse( localStorage.getItem('user')).sex;
-        this.Email=JSON.parse(localStorage.getItem('user')).emeal;
-      }
-    },
-    computed: {
-      btnText() {
-        if (this.isBtnLoading) return '注册中...';
-        return '注册';
-      }
-    },
-    methods: {
-      register() {
-        if (!this.username) {
-          // this.$message.error('请输入用户名');
-          alert('请输入用户名');
-          return;
-        }
-        if (!this.password) {
-          // this.$message.error('请输入密码');
-          // return;
-          alert('请输入密码');
-        }
-        if (!this.nickname) {
-          // this.$message.error('请输入昵称');
-          alert('请输入昵称');
-          return;
-        }
-        if (!this.email) {
-          // this.$message.error('请输入性别');
-          alert('请输入性别');
-          return;
-        }
-        if (!this.email) {
-          // this.$message.error('请输入邮箱');
-          alert('请输入邮箱');
-          return;
-        }
-
-      },
-      userlist: function () {
-        axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(res => {
-          let i = 0;
-          const list = res.data.data.list;
-          while (i <= list.length - 1) {
-            let user = list[i];
-            table_data.push(eval(user));
-            i++;
-          }
-          document.getElementById('get_data_button').style.display='none'
-        }).catch(error => {
-          alert(error);
-        });
-      }
-    }
-  }
+  // //  import { userLogin } from '../../api/api';
+  //
+  // import axios from "axios";
+  //
+  // export default {
+  //   name:'register',
+  //   data() {
+  //     return {
+  //       userName: '',
+  //       password: '',
+  //       isBtnLoading: false
+  //     }
+  //   },
+  //   created () {
+  //     if(JSON.parse( localStorage.getItem('user')) && JSON.parse( localStorage.getItem('user')).userName){
+  //       this.userName = JSON.parse( localStorage.getItem('user')).username;
+  //       this.password = JSON.parse( localStorage.getItem('user')).password;
+  //       this.nickname = JSON.parse( localStorage.getItem('user')).nickname;
+  //       this.sex = JSON.parse( localStorage.getItem('user')).sex;
+  //       this.Email=JSON.parse(localStorage.getItem('user')).emeal;
+  //     }
+  //   },
+  //   computed: {
+  //     btnText() {
+  //       if (this.isBtnLoading) return '注册中...';
+  //       return '注册';
+  //     }
+  //   },
+  //   methods: {
+  //     register() {
+  //       if (!this.username) {
+  //         // this.$message.error('请输入用户名');
+  //         alert('请输入用户名');
+  //         return;
+  //       }
+  //       if (!this.password) {
+  //         // this.$message.error('请输入密码');
+  //         // return;
+  //         alert('请输入密码');
+  //       }
+  //       if (!this.nickname) {
+  //         // this.$message.error('请输入昵称');
+  //         alert('请输入昵称');
+  //         return;
+  //       }
+  //       if (!this.email) {
+  //         // this.$message.error('请输入性别');
+  //         alert('请输入性别');
+  //         return;
+  //       }
+  //       if (!this.email) {
+  //         // this.$message.error('请输入邮箱');
+  //         alert('请输入邮箱');
+  //         return;
+  //       }
+  //
+  //     },
+  //     userlist: function () {
+  //       axios.get(URL_ROOT.base_url + 'user?page=1&size=1').then(res => {
+  //         let i = 0;
+  //         const list = res.data.data.list;
+  //         while (i <= list.length - 1) {
+  //           let user = list[i];
+  //           table_data.push(eval(user));
+  //           i++;
+  //         }
+  //         document.getElementById('get_data_button').style.display='none'
+  //       }).catch(error => {
+  //         alert(error);
+  //       });
+  //     }
+  //   }
+  // }
 </script>
 <style>
   .login_form {
