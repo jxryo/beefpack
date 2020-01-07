@@ -4,13 +4,13 @@
       <submenu name="hk">
         <template slot="title">
           <Icon type="ios-color-wand"/>
-          来点好康的
+          <router-link style="color: white" to="/">来点好康的</router-link>
         </template>
-        <menu-item name="hot_topic">
+        <menu-item name="hot_topic" v-on:click="hot_sort()">
           <Icon type="md-flame"/>
           最热的
         </menu-item>
-        <menu-item name="new_topic">
+        <menu-item name="new_topic" v-on:click="new_sort()">
           <Icon type="logo-snapchat"/>
           最新的
         </menu-item>
@@ -59,7 +59,17 @@
     },
     methods:{
       is_admin:function () {
+
         return false
+      },
+      hot_sort:function () {
+        //最热门的
+      },
+      new_sort:function () {
+        //最新的
+      },
+      is_login:function () {
+        //判断是否登录
       }
     }
 

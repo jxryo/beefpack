@@ -36,9 +36,19 @@
     methods: {
       login_check: function () {
         axios.post(URL_ROOT.base_url + 'login?password=' + this.user_info.password + '&username=' + this.user_info.userName).then(res => {
-          console.log('success');
+          alert('登录成功');
+          // 获取权限
+          // let this_user_admin=false;
+          // axios.get(URL_ROOT.base_url+'user/me').then(data=>{
+          //   alert('登录成功');
+          //   console.log(data);
+          // }).catch(error=>{
+          //   console.log(error)
+          // });
+          this.$router.push({path:'/',params:{
+          }})
         }).catch(error => {
-          console.log(error);
+          console.log('登录失败，请检查用户名密码是否有误');
         });
       }
     }
