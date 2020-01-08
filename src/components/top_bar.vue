@@ -23,22 +23,29 @@
         <Icon type="ios-color-palette" />
         <router-link style="color: white" to="/zmd">看看图</router-link>
       </menu-item>
-      <template v-if="is_admin()">
+      <template v-if="is_admin">
         <menu-item>
           <Icon type="ios-infinite" />
           <router-link style="color:black" to="/admin">管理后台</router-link>
         </menu-item>
       </template>
       <menu-item style="position: relative;left: 1000px">
-        <div v-on:click="loginChange">
+        <div>
+          <template v-if="is_no_login">
           <div id="login_out">
             <Icon type="md-person-add"/>
             <router-link style="color: white" to="/login">登录</router-link>
           </div>
+          </template>
           <template v-if="is_login">
             <div id="login_in">
-              <Icon type="md-person-add"/>
-              我的
+              <Icon type="md-person"/>
+              <submenu>
+                我的
+                <menu-item>1</menu-item>
+                <menu-item>2</menu-item>
+              </submenu>
+
             </div>
           </template>
         </div>
@@ -48,6 +55,9 @@
 </template>
 
 <script>
+  let URL_ROOT = {
+    'base_url': 'http://localhost:8080/',
+  };
   import axios from 'axios';
   export default {
     name: "top_bar",
@@ -55,13 +65,37 @@
       return {
         theme1:'primary',
         is_login: false,
-        loginChange:false
+        is_no_login:true,
+        is_admin:false
       }
     },
     methods:{
-      is_admin:function () {
-
-        return false
+      loginChange:function(){
+        if(this.is_login){
+          return false;
+        }
+      },
+      get_my_Info: function (func) {
+        axios.get(URL_ROOT.base_url + 'user/me').then(res => {
+          // console.log('get:'+res.data.data);
+          let user_info = res.data.data;
+          this.is_login=true;
+          this.is_no_login=false;
+          func(user_info);
+        }).catch(error => {
+          console.log(error);
+        });
+      }, get_user_admin: function () {
+        this.get_my_Info(user => {
+          let user_admin = user.admin;
+          if (user_admin) {
+            console.log(true);
+            this.is_admin=true
+          } else {
+            console.log(false);
+            this.is_admin=false
+          }
+        });
       },
       hot_sort:function () {
         //最热门的
@@ -72,8 +106,10 @@
       // is_login_status:function () {
       //   //判断是否登录
       // }
+    },
+    mounted() {
+      this.get_my_Info();
     }
-
   }
 
 </script>

@@ -95,7 +95,7 @@
     width: 100%;
     margin: 0 auto;
     /*background: url("../assets/bgp/land.jpg");*/
-    height: 9999px;
+    height: 1300px;
     display: flex;
     flex-direction: column;
 
