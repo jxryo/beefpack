@@ -43,7 +43,7 @@
     },
     methods: {
       register_user: function () {
-        axios.post(URL_ROOT.base_url + 'user',this.user_list_info).then(res => {
+        axios.post(URL_ROOT.base_url + '/register',this.user_list_info).then(res => {
           alert('注册成功');
           // console.log(this.$router.app.$router.currentRoute.path);
 

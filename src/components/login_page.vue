@@ -19,7 +19,7 @@
 
 <script>
   let URL_ROOT = {
-    'base_url': 'http://localhost:8080/',
+    'base_url': 'http://127.0.0.1:8080/',
   };
   import axios from "axios";
 
@@ -29,24 +29,36 @@
       return {
         user_info: {
           userName: '',
-          password: ''
+          password: '',
+          is_login:this.$store.state.is_login,
+          is_admin:this.$store.state.is_admin
         }
       }
+    }
+    ,created() {
     },
     methods: {
       login_check: function () {
         axios.post(URL_ROOT.base_url + 'login?password=' + this.user_info.password + '&username=' + this.user_info.userName).then(res => {
-          alert('登录成功');
-          // 获取权限
-          // let this_user_admin=false;
-          // axios.get(URL_ROOT.base_url+'user/me').then(data=>{
-          //   alert('登录成功');
-          //   console.log(data);
-          // }).catch(error=>{
-          //   console.log(error)
+          // //测试user me
+          // axios.get(URL_ROOT.base_url + 'user/me').then(res => {
+          //   console.log(res);
+          //   alert(res);
+          // }).catch(error => {
+          //   console.log(error);
           // });
-          this.$router.push({path:'/',params:{
-          }})
+          alert('登录成功');
+          this.$store.commit('is_login',true);
+          // //司马跳转方法，丢数据
+          this.$router.push({path:'/'});
+          // //测试user me
+          // axios.get(URL_ROOT.base_url + 'user/me').then(res => {
+          //   console.log(res);
+          //   alert(res);
+          // }).catch(error => {
+          //   console.log(error);
+          // })
+          //
         }).catch(error => {
           console.log('登录失败，请检查用户名密码是否有误');
         });

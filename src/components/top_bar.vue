@@ -1,16 +1,16 @@
 <template>
   <div>
     <Menu mode="horizontal" :theme="theme1" active-name="1">
-      <submenu name="hk">
+      <submenu id="hk">
         <template slot="title">
           <Icon type="ios-color-wand"/>
           <router-link style="color: white" to="/">来点好康的</router-link>
         </template>
-        <menu-item name="hot_topic" v-on:click="hot_sort()">
+        <menu-item id="hot_topic" v-on:click="hot_sort()">
           <Icon type="md-flame"/>
           最热的
         </menu-item>
-        <menu-item name="new_topic" v-on:click="new_sort()">
+        <menu-item id="new_topic" v-on:click="new_sort()">
           <Icon type="logo-snapchat"/>
           最新的
         </menu-item>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: "top_bar",
     data(){
@@ -67,10 +68,10 @@
       },
       new_sort:function () {
         //最新的
-      },
-      is_login:function () {
-        //判断是否登录
       }
+      // is_login_status:function () {
+      //   //判断是否登录
+      // }
     }
 
   }
