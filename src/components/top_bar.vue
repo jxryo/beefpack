@@ -34,22 +34,25 @@
           <template v-if="is_no_login">
           <div id="login_out">
             <Icon type="md-person-add"/>
-            <router-link style="color: white" to="/login">登录</router-link>
+            <router-link style="color: white" to="/test">登录</router-link>
           </div>
           </template>
           <template v-if="is_login">
             <div id="login_in">
               <Icon type="md-person"/>
-              <submenu>
                 我的
-                <menu-item>1</menu-item>
-                <menu-item>2</menu-item>
-              </submenu>
-
             </div>
           </template>
         </div>
       </menu-item>
+      <template v-if="is_login">
+      <menu-item style="position:relative;left: 970px">
+        <div v-on:click="logout">
+        <Icon type="ios-exit" />
+        退出
+        </div>
+      </menu-item>
+      </template>
     </Menu>
   </div>
 </template>
@@ -96,6 +99,12 @@
             this.is_admin=false
           }
         });
+      },logout:function () {
+        axios.get(URL_ROOT.base_url+'logout').then(res=>{
+          alert('退出成功')
+        }).catch(error=>{
+          alert(error);
+        })
       },
       hot_sort:function () {
         //最热门的

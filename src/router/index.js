@@ -14,7 +14,7 @@ import card from "../components/card";
 import App from "../App";
 import affix_write_button from "../components/affix_write_button";
 import write_artical from "../components/write_artical";
-
+import test from "../views/test";
 Vue.use(Router);
 
 export default new Router({
@@ -75,6 +75,10 @@ export default new Router({
     path:'/write_artical',
       name:'write_artical',
       component:write_artical
+    },{
+    path:'/test',
+      name:'test',
+      component:test
     }
   ]
 })

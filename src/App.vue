@@ -4,7 +4,7 @@
 <!--    <router-view/>-->
 <!--  </div>-->
 
-  <div>
+  <div id="app">
     <router-view/>
   </div>
 
@@ -29,10 +29,10 @@
        window.addEventListener("beforeunload",()=>{
          sessionStorage.setItem("store",JSON.stringify(this.$store.state))
        })
-     },
-     methods:{
      }
-   };
+     // methods:{
+     // }
+   }
 </script>
 
 <style>

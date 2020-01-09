@@ -6,17 +6,25 @@
         <card/>
       </div>
     </div>
-    <affix_write_button v-on:click="go_to_write"/>
-    <div>
-      <i-button v-on:click="get_user_admin">测试</i-button>
-      <i-button v-on:click="get_logout">退出</i-button>
-    </div>
-    <!--    <div>-->
-    <!--      <i-button icon="md-brush"/>-->
-    <!--    </div>-->
-    <!--    <div style="top: 0">-->
-    <!--      <zmd/>-->
-    <!--    </div>-->
+    <template v-if="is_login">
+      <affix :offset-bottom="60">
+        <div class="demo-affix">
+          <i-button icon="md-brush" style="position: relative;left: 1400px" v-on:click="go_to_write"/>
+        </div>
+      </affix>
+    </template>
+    <template v-if="is_admin">
+      <affix :offset-bottom="20">
+        <div class="demo-affix">
+          <i-button icon="md-cafe" style="position: relative;left: 1400px" v-on:click="go_to_home"/>
+        </div>
+      </affix>
+    </template>
+<!--    <div>-->
+<!--      <i-button v-on:click="get_user_admin">测试</i-button>-->
+<!--      <i-button v-on:click="get_logout">退出</i-button>-->
+<!--    </div>-->
+
   </div>
 </template>
 
@@ -30,16 +38,18 @@
   import zmd from "../components/zmd";
   import axios from "axios";
   import affix_write_button from "../components/affix_write_button";
+
   // // import axios from 'axios';
   // // //修复CORS
-  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
   export default {
     name: "mainPage",
     data() {
       return {
         theme1: 'primary',
         theme2: 'dark',
-        is_login: false
+        is_login: false,
+        is_admin:false
       }
     }, components: {top_bar, card, zmd, affix_write_button},
     methods: {
@@ -59,7 +69,7 @@
       },
       get_my_Info: function (func) {
         axios.get(URL_ROOT.base_url + 'user/me').then(res => {
-          // console.log('get:'+res.data.data);
+          this.is_login=true;
           let user_info = res.data.data;
           func(user_info);
         }).catch(error => {
@@ -70,10 +80,10 @@
           let user_admin = user.admin;
           if (user_admin) {
             console.log(true);
-            return true
+            this.is_admin= true
           } else {
             console.log(false);
-            return false
+            this.is_admin= false
           }
         });
       },
@@ -84,8 +94,14 @@
         });
       },
       go_to_write:function () {
-        this.$router.push('/');
+        this.$router.push('/write_artical');
+      },
+      go_to_home:function () {
+        this.$router.push('/admin');
       }
+    },mounted() {
+      this.get_my_Info();
+      this.get_user_admin();
     }
   }
 </script>
@@ -93,11 +109,13 @@
 <style scoped>
   .main_land {
     width: 100%;
+    height: 1000px;
     margin: 0 auto;
     /*background: url("../assets/bgp/land.jpg");*/
-    height: 1300px;
     display: flex;
     flex-direction: column;
+    background-size: cover;
+    background: white;
 
   }
 </style>

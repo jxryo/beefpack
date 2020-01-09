@@ -9,34 +9,35 @@ import 'view-design/dist/styles/iview.css'
 import global from "../static/global"
 import './style/theme.css'
 import './style/character.css'
+import VueSession from "vue-session";
+import VueCookies from 'vue-cookies';
+
 //自己写的样式
 import ElementUI from 'element-ui'
 import vuex from 'vuex'
 import axios from "axios";
 // import axios from "axios";
 // 注册element-ui
-Vue.use(ElementUI);
+// Vue.use(ElementUI);
 Vue.use(vuex);
-
+Vue.use(VueSession);
+Vue.use(VueCookies);
 // axios.defaults.withCredentials = true;
 Vue.config.productionTip = false;
 // Vue.use(axios);
 Vue.use(ViewUI);
 Vue.component('top_bar', { /* ... */});
 // 将axios和qs挂载
-Vue.prototype.Global = global;
+// Vue.prototype.Global = global;
 // Vue.prototype.$axios = axios;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  components: {App},
-  template: '<App/>',
-  methods:{
-
-  }
-});
+  // template: '<App/>',
+render:h=>h(App)
+}).$mount('#app');
 
 // axios.get(URL_ROOT.base_url+'user?page=1&size=1').then(data=>{
 //   alert('ok');
